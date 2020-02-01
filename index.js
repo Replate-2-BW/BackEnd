@@ -3,7 +3,7 @@ const express = require("express");
 //SESSIONB DEPENDANCIES
 
 // Import Data
-
+const db = require('./data/db.js');
 
 //START WITH EXPRESS
 const server = express();
@@ -24,14 +24,14 @@ server.use(express.json());
 server.use(logger);
 
 //ROUTES
-//const projectRouter = require('./routes/projectRouter.js');
+const projectRouter = require('./routes/projectRouter.js');
 
 //ENDPOINTS
 server.get('/', logger, (req, res) => {
   res.send(`<h2>GLOBAL SERVER UP ENDPOINT</h2>`);
 });
 
-//server.use('/api/projectURL', projectRouter);
+server.use('/api', projectRouter);
 
 
 //LISTEN SERVER

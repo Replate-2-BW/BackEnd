@@ -3,7 +3,7 @@ exports.up = function(knex) {
   return knex.schema
     .createTable("users", (table) => {
       table.increments();// id column, integer, primary key, auto-increment
-      table.string("username").index().notNullable();
+      table.string("username").index().notNullable().unique();
       table.string("password").index().notNullable();
       table.string("phoneNumber").index().notNullable();
       table.string("bizName").index();

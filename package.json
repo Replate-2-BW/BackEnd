@@ -1,7 +1,7 @@
 {
-    "name": "node-auth3-project",
+    "name": "replate2bw",
     "version": "1.0.0",
-    "description": "U4 W2 D3",
+    "description": "replate2bw",
     "main": "index.js",
     "scripts": {
         "server": "nodemon index.js",
