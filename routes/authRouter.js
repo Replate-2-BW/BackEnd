@@ -21,9 +21,9 @@ router.get('/:id/user', isLoggedIn, (request, responce) => {
 });
 
 //PUT	/api/auth/:id/user	EDIT	NewObj, send (token)
-router.put('/:id/user', (request, responce) => {
+router.put('/:id/user', isLoggedIn, (request, responce) => {
   AuthModel.editUserById(request.params.id, request.body)
-    .then(numUpdated => { responce.json(numUpdated); })
+    .then(updated => { responce.status(201).json(updated); })
     .catch( error => {
       console.log(error);
       responce.status(500).json( {error: "PUT Edit User Failed."} )
@@ -31,30 +31,13 @@ router.put('/:id/user', (request, responce) => {
 });
 
 //DEL
-router.delete('/:id/user/del', (request, responce) => {
-  //db("cars").where({ id: request.params.id }).del()
+router.delete('/:id/user/del', isLoggedIn, (request, responce) => {
   AuthModel.delUserById(request.params.id)
-    .then(numRemoved => { responce.json(numRemoved); })
+    .then(numRemoved => { responce.status(201).json(numRemoved); })
     .catch( error => {
       console.log(error);
-      responce.status(500).json( {error: "PUT Failed."} )
+      responce.status(500).json( {error: "DEL Failed."} )
     })
 });
-
-
-//TOKEN
-/*
-function signToken(user) {
-  const payload = {
-    userID: user.id,
-    userType: user.userType
-  };
-
-  const options = {
-    expiresIn: '1d'
-  };
-
-  return jwt.sign(payload, myMidWare.jwtSecret, options);
-}*/
 
 module.exports = router;

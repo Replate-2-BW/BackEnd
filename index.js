@@ -26,6 +26,7 @@ server.use(logger);
 //ROUTES
 const projectRouter = require('./routes/projectRouter.js');
 const authRouter = require('./routes/authRouter.js');
+const pickupRouter = require('./routes/pickupRouter.js');
 
 //ENDPOINTS
 server.get('/', logger, (req, res) => {
@@ -34,6 +35,7 @@ server.get('/', logger, (req, res) => {
 
 server.use('/api', projectRouter);
 server.use('/api/auth', authRouter);
+server.use('/api/auth/pickup', pickupRouter);
 
 
 //LISTEN SERVER
