@@ -39,22 +39,19 @@ module.exports = {
   },
 
   production: {
-    client: 'sqlite3',
+    client: 'postgresql',
     connection: {
-      filename: "./data/replate2bw.db3",
-    },
-    useNullAsDefault: true, // ONLY needed for SQLite
-
-    migrations: {
-        directory: "./migrations",
-    },
-    seeds: {
-        directory: "./seeds",
+      database: 'my_db',
+      user:     'username',
+      password: 'password'
     },
     pool: {
-        afterCreate: (conn, done) => {
-            conn.run("PRAGMA foreign_keys = ON", done); // tur on foreign key enforcement
-        },
+      min: 2,
+      max: 10
     },
+    migrations: {
+      tableName: 'knex_migrations'
+    }
+  }
 
 };
