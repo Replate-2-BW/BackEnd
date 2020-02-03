@@ -41,3 +41,5 @@ server.use('/api/auth/pickup', pickupRouter);
 //LISTEN SERVER
 const port = process.env.PORT || 8000;
 server.listen(port, () => console.log((`\n ** api on: ${port} ** \n`)));
+
+module.exports = server;// must export for tests
