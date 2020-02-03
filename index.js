@@ -1,5 +1,7 @@
 //Dependancies
 const express = require("express");
+const cors = require('cors');
+const helmet = require('helmet');
 //SESSIONB DEPENDANCIES
 
 // Import Data
@@ -20,6 +22,8 @@ function logger(request, responce, next) {
 }
 
 //MIDDLE WARE
+server.use(helmet());
+server.use(cors());
 server.use(express.json());
 server.use(logger);
 
