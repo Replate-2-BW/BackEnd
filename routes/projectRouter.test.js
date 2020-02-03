@@ -2,8 +2,8 @@ const request = require('supertest');
 
 const server = require('./../index.js');
 
-describe('server', function() {
-    /*it('Sanity Test', function() {
+describe('projectRouter Tests', function() {
+/*    it('Sanity Test', function() {
         //expect(true).toBe(false);// it can fail
     })*/
 
@@ -50,6 +50,5 @@ describe('server', function() {
           expect(res.status).toBe(500);
       })
     })
-
 
 })

@@ -13,7 +13,7 @@ const router = express.Router();
 //GET	/api/auth/:id/user
 router.get('/:id/user', isLoggedIn, (request, responce) => {
   AuthModel.findUserById(request.params.id)
-    .then(user => { responce.json(user); })
+    .then(user => { responce.status(201).json(user); })
     .catch( error => {
       console.log(error);
       responce.status(500).json( {error: "Get USERS Failed."} )
