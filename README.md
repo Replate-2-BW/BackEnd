@@ -1,9 +1,9 @@
-# BackEnd
+## BackEnd Replate2 Build Weak
 
 ## Deployed version
 https://replate-2.herokuapp.com/
 
-## User End Points
+# User End Points
 ### POST /api/register
 Endpoint to create a user when sending requiered values
 #### User Object
@@ -75,7 +75,7 @@ Returns the updated object.
 
 
 
-## Pickup End Points
+# Pickup End Points
 ### POST /api/auth/pickup/add
 Endpoint for Biz to create a Pickup:
 * Requires a valid "Authorization" token in the header.
