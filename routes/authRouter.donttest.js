@@ -104,8 +104,4 @@ describe('authRouter Tests', function() {
     expect(res.status).toBe(201);
   })
 
-
-
-
-
 })
