@@ -3,7 +3,7 @@
 ## Deployed version
 https://replate-2.herokuapp.com/
 
-## End Points
+## User End Points
 ### POST /api/register
 Endpoint to create a user when sending requiered values
 #### User Object
@@ -75,8 +75,53 @@ Returns the updated object.
 
 
 
+## Pickup End Points
+### POST /api/auth/pickup/add
+Endpoint for Biz to create a Pickup:
+* Requires a valid "Authorization" token in the header.
+* pass a 1 for volUserID to link it to the place holder ID untill an actual user claims it
+* bizUserID should be the ID of the biz creating the pickup
+* both IDs must be valid to create a new pick up.
+#### Sample Object:
+```
+{
+    "id": (SYSTEM GENERATED),
+    "typeOfFood": "required",
+    "qty": 10, (required integer)
+    "preferredPickupTime": "required",
+    "bizUserID": 3, (required valid user ID)
+    "VolClaimed": 0, (boolean defaults to false)
+    "volUserID": 1, (SEE ABOVE, set to 1 is no user is claiming)
+    "delivered": 0 (boolean defaults to false)
+}
+```
+Endpoint returns the object created.
 
+### PUT /api/auth/pickup/:id
+Endpoint for editing a Pick-up by the ID of the pick-up.
+* Requires a valid "Authorization" token in the header.
+* Requires the values to be updated
+```
+{
+	"typeOfFood": "apple"
+}
+```
+Returns the updated object.
 
+### GET /api/auth/pickup/
+* Requires a valid "Authorization" token in the header.
+* Returns an  array list of all unclaimed pick ups for volunteers to claim.
 
-required
-optional
+### GET /api/auth/pickup/:id/vol
+* Requires a valid "Authorization" token in the header.
+* Returns a list of pick ups claimed by the volunteers ID passed.
+
+### GET /api/auth/pickup/:id/biz
+* Requires a valid "Authorization" token in the header.
+* Returns a list of pick ups claimed by the biz ID passed.
+
+### DEL /api/auth/pickup/:id/del
+Endpoint to DEL a Pickup buy the pickup ID passed
+* Requires a valid "Authorization" token in the header.
+#### NOTE: This should only be used with a biz user to del their pick up.
+* claim and drop off changes should be done with the PUT for editing a pick up.
