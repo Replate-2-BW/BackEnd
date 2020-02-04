@@ -50,7 +50,4 @@ describe('projectRouter Tests', function() {
         expect(res.status).toBe(500);
     })
   })
-
-
-
 })
